@@ -1,6 +1,10 @@
 from dependency_injector import containers, providers
 
-from src.infrastructure.repositories.user_repository import UserRepositoryFoo
+from src.infrastructure.database import Database
+from src.infrastructure.repositories.user_repository_orm import (
+    UserRepositoryOrm,
+)
+from src.infrastructure.settings import Settings
 from src.use_cases.user import (
     CreateUserUseCase,
     DeleteUserUseCase,
@@ -15,7 +19,12 @@ class Container(containers.DeclarativeContainer):
     # config = providers.Configuration(yaml_files=["config.yml"])
     config = providers.Configuration()
 
-    user_repository = providers.Factory(UserRepositoryFoo)
+    db = providers.Singleton(Database, db_url=Settings().DATABASE_URL)
+
+    # pylint: disable=no-member
+    user_repository = providers.Factory(
+        UserRepositoryOrm, session_factory=db.provided.session
+    )
 
     create_user_use_case = providers.Factory(
         CreateUserUseCase,

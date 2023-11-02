@@ -5,7 +5,7 @@ from src.domain.entities.user import User, UserId
 
 class UserRepository(ABC):
     @abstractmethod
-    async def create(self, user: User) -> bool:
+    def create(self, user: User) -> bool:
         pass
 
     @abstractmethod

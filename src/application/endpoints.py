@@ -46,7 +46,7 @@ async def create_user(
 
 @router.get('/users/', response_model=GetUsersResponse)
 @inject
-def get_users(
+async def get_users(
     use_case: GetUsersUseCase = Depends(Provide[Container.get_users_use_case]),
 ):
     users = use_case.execute()
