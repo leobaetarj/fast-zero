@@ -1,35 +1,43 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import EmailStr
+from pydantic.dataclasses import dataclass
 
 
-class CreateUserRequest(BaseModel):
+@dataclass
+class CreateUserRequest:
     username: str
     email: EmailStr
     password: str
 
 
-class UpdateUserRequest(BaseModel):
+@dataclass
+class UpdateUserRequest:
     username: str
     email: EmailStr
     password: str
 
 
-class UserPayload(BaseModel):
+@dataclass
+class UserPayload:
     id: str
     username: str
     email: EmailStr
 
 
-class CreateUserResponse(BaseModel):
+@dataclass
+class CreateUserResponse:
     user: UserPayload
 
 
-class GetUsersResponse(BaseModel):
+@dataclass
+class GetUsersResponse:
     users: list[UserPayload]
 
 
-class UpdateUserResponse(BaseModel):
+@dataclass
+class UpdateUserResponse:
     user: UserPayload
 
 
-class DeleteUserResponse(BaseModel):
+@dataclass
+class DeleteUserResponse:
     detail: str
