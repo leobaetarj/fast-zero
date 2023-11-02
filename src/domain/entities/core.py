@@ -1,9 +1,11 @@
 from uuid import UUID, uuid4
 
-from pydantic import BaseModel, Field
+from pydantic import Field
+from pydantic.dataclasses import dataclass
 
 
-class Identity(BaseModel):
+@dataclass
+class Identity:
     value: UUID = Field(default_factory=uuid4)
 
     def __str__(self):
@@ -13,5 +15,6 @@ class Identity(BaseModel):
         return self.value == other.value
 
 
-class Entity(BaseModel):
+@dataclass
+class Entity:
     id: Identity
