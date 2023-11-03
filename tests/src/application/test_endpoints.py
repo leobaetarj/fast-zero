@@ -5,10 +5,6 @@ from src.application.app import app
 from src.domain.entities.user import User, UserId
 from src.domain.repositories.user_repository import UserRepository
 
-# TODO: Check spies (params passed to repos)
-# TODO: Check errors (404, exceptions...)
-# TODO: Test repositories (in memory)
-
 
 def test_root_must_returns_200_and_expected_string(client):
     response = client.get('/')

@@ -44,11 +44,11 @@ extend-exclude = '(migrations/)'
 
 [tool.taskipy.tasks]
 lint = 'ruff . && blue --check . --diff --exclude migrations'
-format = 'blue .  && isort .'
+format = 'blue . && isort .'
 run = 'uvicorn src.application.app:app --reload'
 pre_test = 'task lint'
 test-cov = 'pytest -s -x --cov=src/ -vv'
-test = 'pytest -s -x -vv'
+test = 'pytest -s -x'
 post_test = 'coverage html'
 clean = 'find . | grep -E "(__pycache__|\.pyc$)" | xargs rm -rf'
 

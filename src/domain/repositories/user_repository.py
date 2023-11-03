@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from src.domain.entities.user import User, UserId
+from src.domain.entities.user import User
 
 
 class UserRepository(ABC):
@@ -17,5 +17,5 @@ class UserRepository(ABC):
         pass
 
     @abstractmethod
-    def delete(self, user_id: UserId) -> bool:
+    def delete(self, user: User) -> bool:
         pass
