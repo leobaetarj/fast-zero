@@ -12,7 +12,7 @@ class Identity:
         return str(self.value)
 
     def __eq__(self, other):
-        return self.value == other.value
+        return str(self) == str(other)
 
 
 @dataclass

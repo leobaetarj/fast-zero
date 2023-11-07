@@ -40,6 +40,4 @@ def test_db_get_list(session):
 
     session.commit()
 
-    users = session.scalars(select(UserModel)).all()
-
-    print(users)
+    session.scalars(select(UserModel)).all()
